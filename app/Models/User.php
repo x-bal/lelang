@@ -11,22 +11,13 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
+        'level_id'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password',
         'remember_token',
@@ -40,4 +31,29 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function level()
+    {
+        return $this->belongsTo(Level::class);
+    }
+
+    public function petugas()
+    {
+        return $this->hasOne(Petugas::class);
+    }
+
+    public function masyarakat()
+    {
+        return $this->hasOne(Masyarakat::class);
+    }
+
+    public function historyLelang()
+    {
+        return $this->hasOne(HistoryLelang::class);
+    }
+
+    public function lelang()
+    {
+        return $this->hasOne(Lelang::class);
+    }
 }

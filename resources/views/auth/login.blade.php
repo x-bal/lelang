@@ -11,6 +11,7 @@
             <p style="font-size: 20px;" class="auth-subtitle mb-5">Log in with your data that you entered during registration.</p>
 
             <form action="{{ route('login') }}" method="POST">
+                @csrf
                 <div class="form-group position-relative has-icon-left mb-4">
                     <input type="text" class="form-control form-control" placeholder="Username" name="username" value="{{ old('username') }}">
                     <div class="form-control-icon">
